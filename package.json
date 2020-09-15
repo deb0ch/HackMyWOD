@@ -25,7 +25,10 @@
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/node-fetch": "^2.5.7",
+    "node-fetch": "^3.0.0-beta.9"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "sh ./pre-commit.sh"
