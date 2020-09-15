@@ -1,0 +1,31 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "eslint-plugin-import",
+    "pep8-blank-lines"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "brace-style": ["error", "1tbs", { "allowSingleLine": false }],
+    "curly": ["error", "all"],
+    "import/order": ["error", {
+      "newlines-between": "always",
+      "alphabetize": { "order": "asc" }
+    }],
+    "nonblock-statement-body-position": ["error", "below"],
+    "padding-line-between-statements": [
+      "error",
+      { "prev": "block", "next": "*", "blankLine": "never" },
+      { "prev": "*", "next": "return", "blankLine": "always" }
+    ],
+    "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
+    "pep8-blank-lines/pep8-blank-lines": "error",
+    "sort-keys": ["error", "asc", { "caseSensitive": true, "natural": true, "minKeys": 5 }]
+  }
+}
