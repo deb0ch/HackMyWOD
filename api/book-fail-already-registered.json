@@ -1,0 +1,10 @@
+{
+  "errors": [
+    {
+      "messages": [
+        "Le client est déjà enregistré pour l´événement sélectionné "
+      ],
+      "bookingId": 11119002
+    }
+  ]
+}
