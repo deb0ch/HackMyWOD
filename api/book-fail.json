@@ -1,0 +1,22 @@
+{
+  "success": false,
+  "message": "The booking window for this event opens on 19/09/2020 at 18:00:00",
+  "exception": "Coursika.TranslatableException: The booking window for this event opens on 19/09/2020 at 18:00:00\r\n   at Coursika.Models.Booking.ValidateBookingWindow(Event evnt, Nullable`1 dateTime)\r\n   at Coursika.Models.Booking.Create(CourseContext context, Event evnt, Customer customer, String bookingOrigin, OrderLine orderLine, Boolean force, Nullable`1 fallBackToWaitingList, Boolean updateCustomerProps, BookingSeries bookingSeries, Boolean checkDoubleBookings)\r\n   at Coursika.Api.Controllers.BookingController.CreateBooking(String eventId, Int32 customerId, Nullable`1 orderLineId, Boolean force, Boolean sendMail, String bookingOrigin, Nullable`1 presenceType) in D:\\Dev\\Code\\Fitogram\\core-service\\Coursika.Api\\Controllers\\BookingController.cs:line 930\r\n   at lambda_method(Closure , Object , Object[] )\r\n   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)\r\n   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\r\n   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()\r\n   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\r\n   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()\r\n   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\r\n   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()\r\n   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__2.MoveNext()\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\r\n   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()\r\n   at System.Web.Http.Controllers.AuthenticationFilterResult.<ExecuteAsync>d__0.MoveNext()\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()\r\n   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()\r\n   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__0.MoveNext()",
+  "messages": [
+    {
+      "field": null,
+      "key": "fcs.bookingWindowForEventStartsOn",
+      "defaultMessage": "The booking window for this event opens on 19/09/2020 at 18:00:00",
+      "values": [
+        {
+          "key": "date",
+          "value": "19/09/2020"
+        },
+        {
+          "key": "time",
+          "value": "18:00:00"
+        }
+      ]
+    }
+  ]
+}

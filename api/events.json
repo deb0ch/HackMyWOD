@@ -1,0 +1,41 @@
+[
+  {
+    "id": "dfa8cf70-ec47-457d-9fdc-17ec9a03cca7",
+    "integerId": 23085174,
+    "numericId": 23085174,
+    "providerId": "ec233996-3901-4df0-882e-c28a8ff3a8eb",
+    "eventGroupId": "ece79380-4014-4adc-9587-bee7df1ec313",
+    "eventSerieId": "c5c3deac-941c-40ad-a5c9-96d4e2245fe7",
+    "originalStart": "2020-09-22T16:30:00+00:00",
+    "start": "2020-09-22T16:30:00+00:00",
+    "end": "2020-09-22T17:15:00+00:00",
+    "name": "Louvre 3 - Wod WEIGHTLIFTING",
+    "color": "#00f820",
+    "notes": null,
+    "cancelled": false,
+    "cancellationReason": null,
+    "seats": 10,
+    "public": true,
+    "type": "Class",
+    "waitingListEnabled": false,
+    "locationId": "7746657f-c896-44db-aaa7-8820bdb0be40",
+    "trainerIds": [
+      "2404a6fa-f7e6-4232-aa6b-5cf6699f3476"
+    ],
+    "resourceIds": [],
+    "multipleBookingEnabled": false,
+    "publicBookingEnabled": true,
+    "publicBookingWindowStart": "-3.00:00:00",
+    "publicBookingWindowEnd": null,
+    "publicCancellationEnabled": true,
+    "publicCancellationWindowStart": null,
+    "publicCancellationWindowEnd": "00:00:00",
+    "publicCancellationRefundEnd": null,
+    "deleted": null,
+    "timeStamp": "2020-09-18T06:03:24.213181+00:00",
+    "livestream": false,
+    "virtualClassUrl": null,
+    "liveStreamId": null,
+    "categoryId": 235
+  }
+]
