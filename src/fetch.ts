@@ -1,23 +1,28 @@
 
 import fetch from 'node-fetch';
 
+import { EventResponse } from './types';
+
 
 const jwtToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoidGhvbWFzLmRlLmJlYXVjaGVuZUBnbWFpbC5jb20iLCJ1c2VyX2xhbmd1YWdlIjoiZnIiLCJ1c2VyX3V1aWQiOiIzMjE4OTZiMS1hMWNlLTRlMGItODExZC0wNjViZjE3NGY4NWMiLCJ1c2VyX3R5cGUiOiJ1c2VyIiwidXNlcl9kaXNwbGF5X25hbWUiOiJUaG9tYXMgZGUgQmVhdWNow6puZSIsInNjb3BlIjpbImVtYWlsIiwicHJvZmlsZSIsIm9wZW5pZCIsIm9mZmxpbmVfYWNjZXNzIl0sInN1YiI6IjMyMTg5NmIxLWExY2UtNGUwYi04MTFkLTA2NWJmMTc0Zjg1YyIsImNsaWVudF9pZCI6IjcxNGU0OWJkLTZiNmMtNGM4MS04YjJhLWE0NzhkNWYzNTcwYiIsImlhdCI6IjE1OTg5NDkzMjYiLCJleHAiOiIxNjMwNDg1MzI2In0.EgmFbWZ8sYK1HBHnafqeUo0DOlgrHM6pvo7vBXLRmKw';
 
+
 async function getEvents(eventTime: Date) {
+    const timeStart = new Date(eventTime);
+    timeStart.setHours(timeStart.getHours() - 1);
     const timeEnd = new Date(eventTime);
     timeEnd.setDate(timeEnd.getDate() + 1);
     const eventsArgs = [
         "appointments=true",
         "classes=true",
         "courses=true",
-        `from=${encodeURIComponent(eventTime.toISOString())}`,
+        `from=${encodeURIComponent(timeStart.toISOString())}`,
         "locationUUIDs",
         "page=0",
         "preventions=true",
         "providerId=ec233996-3901-4df0-882e-c28a8ff3a8eb",
         "retreats=true",
-        "size=10",
+        "size=20",
         `to=${encodeURIComponent(timeEnd.toISOString())}`,
         "trainersUuids&workshops=true"
     ];
@@ -36,15 +41,14 @@ async function getEvents(eventTime: Date) {
         // "mode": "cors",
     });
     const eventsJson: any = await eventsResponse.json();
-    console.log(JSON.stringify(eventsJson, null, 2));
 
     return eventsJson;
 }
 
 
+// TODO: type for an orderline
 async function getOrderLines(eventId: string) {
     const orderLinesUrl = `https://api.fitogram.pro/event/${eventId}/customers/1195463/orderlines?`;
-    console.log(`getOrderLines: ${orderLinesUrl}`);
     const orderLines = await fetch(orderLinesUrl, {
         // "credentials": "include",
         "headers": {
@@ -63,13 +67,13 @@ async function getOrderLines(eventId: string) {
         "method": "GET",
         // "mode": "cors"
     });
-    const ordersJson : any = await orderLines.json();
-    console.log(JSON.stringify(ordersJson, null, 2));
+    const ordersJson: any = await orderLines.json();
 
     return ordersJson;
 }
 
 
+// TODO: type for success | failure
 async function postBookEvent(eventId: string, orderLineId: string) {
     const bookArgs = [
         'customerId=1195463',
@@ -79,7 +83,6 @@ async function postBookEvent(eventId: string, orderLineId: string) {
         'sendMail=true'
     ];
     const bookUrl = `https://api.fitogram.pro/bookings?${bookArgs.join('&')}`;
-    console.log(`bookUrl = ${bookUrl}`);
     const bookResponse = await fetch(bookUrl, {
         // "credentials": "include",
         "headers": {
@@ -99,7 +102,7 @@ async function postBookEvent(eventId: string, orderLineId: string) {
         // "mode": "cors"
     });
     const bookJson = await bookResponse.json();
-    console.log(JSON.stringify(bookJson, null, 2));
+    console.log(JSON.stringify(bookJson, null, 2).slice(0, 500));
 
     return bookJson;
 }
