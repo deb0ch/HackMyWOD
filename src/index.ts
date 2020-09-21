@@ -18,8 +18,8 @@ async function retryBookEvent(event: EventResponse, orderLineId: string) {
 
 
 async function main() {
-    const date = new Date(2020, 8, 24, 18, 30);
-    const name = 'Louvre 3 - Wod GYM';
+    const date = new Date(2020, 8, 23, 18, 15);
+    const name = 'Louvre 3 - WOD RDC';
 
     const events = await getEvents(date);
     const myEvent = getEvent(events, date, name)

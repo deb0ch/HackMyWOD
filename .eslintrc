@@ -1,24 +1,44 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "plugins": [
     "@typescript-eslint",
     "eslint-plugin-import",
     "pep8-blank-lines"
   ],
   "extends": [
-    "eslint:recommended",
+    "airbnb-typescript/base",
+    "plugin:promise/recommended",
+    "plugin:eslint-comments/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
     "brace-style": ["error", "1tbs", { "allowSingleLine": false }],
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "only-multiline",
+      "imports": "always-multiline",
+      "objects": "always-multiline"
+    }],
     "curly": ["error", "all"],
+    "function-paren-newline": ["error", "consistent"],
+    "implicit-arrow-linebreak": ["error", "below"],
     "import/order": ["error", {
       "newlines-between": "always",
       "alphabetize": { "order": "asc" }
     }],
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "error",
     "nonblock-statement-body-position": ["error", "below"],
+    "no-await-in-loop": "off",
+    "no-console": "off",
+    "no-multiple-empty-lines": "off",
+    "no-prototype-builtins": "off",
     "padding-line-between-statements": [
       "error",
       { "prev": "block", "next": "*", "blankLine": "never" },
@@ -26,6 +46,8 @@
     ],
     "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
     "pep8-blank-lines/pep8-blank-lines": "error",
+    "promise/prefer-await-to-then": "error",
+    "promise/prefer-await-to-callbacks": "error",
     "sort-keys": ["error", "asc", { "caseSensitive": true, "natural": true, "minKeys": 5 }]
   }
 }
