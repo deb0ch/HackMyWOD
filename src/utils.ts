@@ -12,7 +12,8 @@ function isBookSuccess(bookResponse: Record<string, unknown>): boolean {
 }
 
 
-function getEvent(events: Array<EventResponse>, startTime: Date, name: string) {
+function getEvent(events: Array<EventResponse>, startTime: Date, name: string)
+: EventResponse | undefined {
   return events.find(event =>
     event.name.includes(name)
     && new Date(event.start).toISOString() === startTime.toISOString()

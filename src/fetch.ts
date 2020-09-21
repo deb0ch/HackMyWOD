@@ -1,13 +1,13 @@
 
 import fetch from 'node-fetch';
 
-import { EventResponse } from './types';
+import { BookResponse, EventResponse, OrderLine } from './types';
 
 
 const jwtToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoidGhvbWFzLmRlLmJlYXVjaGVuZUBnbWFpbC5jb20iLCJ1c2VyX2xhbmd1YWdlIjoiZnIiLCJ1c2VyX3V1aWQiOiIzMjE4OTZiMS1hMWNlLTRlMGItODExZC0wNjViZjE3NGY4NWMiLCJ1c2VyX3R5cGUiOiJ1c2VyIiwidXNlcl9kaXNwbGF5X25hbWUiOiJUaG9tYXMgZGUgQmVhdWNow6puZSIsInNjb3BlIjpbImVtYWlsIiwicHJvZmlsZSIsIm9wZW5pZCIsIm9mZmxpbmVfYWNjZXNzIl0sInN1YiI6IjMyMTg5NmIxLWExY2UtNGUwYi04MTFkLTA2NWJmMTc0Zjg1YyIsImNsaWVudF9pZCI6IjcxNGU0OWJkLTZiNmMtNGM4MS04YjJhLWE0NzhkNWYzNTcwYiIsImlhdCI6IjE1OTg5NDkzMjYiLCJleHAiOiIxNjMwNDg1MzI2In0.EgmFbWZ8sYK1HBHnafqeUo0DOlgrHM6pvo7vBXLRmKw';
 
 
-async function getEvents(eventTime: Date) {
+async function getEvents(eventTime: Date): Promise<EventResponse[]> {
     const timeStart = new Date(eventTime);
     timeStart.setHours(timeStart.getHours() - 1);
     const timeEnd = new Date(eventTime);
@@ -40,14 +40,14 @@ async function getEvents(eventTime: Date) {
         "method": "GET",
         // "mode": "cors",
     });
-    const eventsJson: any = await eventsResponse.json();
+    const eventsJson = await eventsResponse.json() as EventResponse[];
 
     return eventsJson;
 }
 
 
 // TODO: type for an orderline
-async function getOrderLines(eventId: string) {
+async function getOrderLines(eventId: string): Promise<OrderLine[]> {
     const orderLinesUrl = `https://api.fitogram.pro/event/${eventId}/customers/1195463/orderlines?`;
     const orderLines = await fetch(orderLinesUrl, {
         // "credentials": "include",
@@ -67,14 +67,14 @@ async function getOrderLines(eventId: string) {
         "method": "GET",
         // "mode": "cors"
     });
-    const ordersJson: any = await orderLines.json();
+    const ordersJson = await orderLines.json() as OrderLine[];
 
     return ordersJson;
 }
 
 
 // TODO: type for success | failure
-async function postBookEvent(eventId: string, orderLineId: string) {
+async function postBookEvent(eventId: string, orderLineId: string): Promise<BookResponse> {
     const bookArgs = [
         'customerId=1195463',
         `eventId=${eventId}`,
@@ -101,7 +101,7 @@ async function postBookEvent(eventId: string, orderLineId: string) {
         "method": "POST",
         // "mode": "cors"
     });
-    const bookJson = await bookResponse.json();
+    const bookJson = await bookResponse.json() as BookResponse;
     console.log(JSON.stringify(bookJson, null, 2).slice(0, 500));
 
     return bookJson;
