@@ -1,34 +1,27 @@
-
-
 interface BookSuccess {
-    id: string,
+  id: string,
 }
-
 
 interface BookFailure {
-    success: boolean,
+  success: boolean,
 }
-
 
 type BookResponse = BookSuccess | BookFailure;
 
-
 interface EventResponse {
-    id: string,
-    name: string,
-    start: string,
+  id: string,
+  name: string,
+  start: string,
 }
-
 
 interface OrderLine {
-    id: string,
+  id: string,
 }
-
 
 export {
-    BookFailure,
-    BookSuccess,
-    BookResponse,
-    EventResponse,
-    OrderLine
-}
+  BookFailure,
+  BookSuccess,
+  BookResponse,
+  EventResponse,
+  OrderLine,
+};
