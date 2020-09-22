@@ -3,6 +3,8 @@
 
 Script script script, I'll be the first to reserve my WOD :D
 
+Developped using NodeJS v12.6.0 / npm 6.9.0
+
 ### Scripts
 
 #### `npm run start:dev`
