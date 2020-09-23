@@ -99,7 +99,6 @@ async function postBookEvent(eventId: string, orderLineId: string): Promise<Book
     // "mode": "cors"
   });
   const bookJson = await bookResponse.json() as BookResponse;
-  console.log(JSON.stringify(bookJson, null, 2).slice(0, 500));
 
   return bookJson;
 }
