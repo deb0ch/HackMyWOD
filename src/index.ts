@@ -3,12 +3,14 @@ import { EventResponse } from './types';
 import { isBookSuccess, getEvent, sleep } from './utils';
 
 
-async function retryBookEvent(event: EventResponse, orderLineId: string) {
+async function retryBookEvent(event: EventResponse) {
   let success = false;
   let count = 0;
   do {
     console.log(`Trying (${count}): ${JSON.stringify(event, null, 2)}`);
     count += 1;
+    const orderLines = await getOrderLines(event.id);
+    const orderLineId = orderLines[0].id;
     const bookResponse = await postBookEvent(event.id, orderLineId);
     success = isBookSuccess(Object(bookResponse));
     await sleep(5000);
@@ -24,8 +26,7 @@ async function main() {
   const myEvent = getEvent(events, date, name);
   if (myEvent) {
     console.log(`Waiting for event : \n${JSON.stringify(myEvent, null, 2)}`);
-    const orderLines = await getOrderLines(myEvent.id);
-    retryBookEvent(myEvent, orderLines[0].id);
+    retryBookEvent(myEvent);
   } else {
     console.log('Event not found');
   }
