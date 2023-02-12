@@ -23,7 +23,7 @@
     "eslint-plugin-pep8-blank-lines": "0.0.8",
     "eslint-plugin-promise": "^4.2.1",
     "husky": "^4.3.0",
-    "nodemon": "^2.0.4",
+    "nodemon": "^2.0.20",
     "rimraf": "^3.0.2",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
